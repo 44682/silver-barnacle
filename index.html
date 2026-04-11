@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安地驾校 - 专业驾培 快速拿证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e88e5;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #1e88e5;
+        }
+        
+        .nav-phone {
+            background: #1e88e5;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* 首页大图 */
+        .hero {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            color: #fff;
+            padding: 150px 20px 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        
+        .hero-price span {
+            font-size: 18px;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+        
+        .btn-primary {
+            background: #ff6f00;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,111,0,0.4);
+        }
+        
+        /* 特色 */
+        .features {
+            padding: 80px 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1e88e5;
+        }
+        
+        /* 课程 */
+        .courses {
+            padding: 80px 20px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            border-color: #1e88e5;
+            box-shadow: 0 10px 40px rgba(30,136,229,0.15);
+        }
+        
+        .course-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #1e88e5;
+        }
+        
+        .course-card .price {
+            font-size: 36px;
+            color: #ff6f00;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .course-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .course-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .course-card ul li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        /* 报名 */
+        .signup {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            color: #fff;
+        }
+        
+        .signup .section-title {
+            color: #fff;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1e88e5;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: #ff6f00;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: #e65100;
+        }
+        
+        /* 联系 */
+        .contact {
+            padding: 80px 20px;
+            background: #f5f5f5;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .contact-item h3 {
+            color: #1e88e5;
+            margin-bottom: 15px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚗 安地驾校</div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#features">优势</a>
+                <a href="#courses">课程</a>
+                <a href="#signup">报名</a>
+                <a href="#contact">联系</a>
+            </div>
+            <a href="tel:15898114611" class="nav-phone">📞 15898114611</a>
+        </div>
+    </nav>
+
+    <!-- 首页大图 -->
+    <section class="hero" id="home">
+        <h1>安地驾校</h1>
+        <p>大连辛寨子专业驾培 · 快速拿证 · 一对一教学</p>
+        <div class="hero-price">¥3680 <span>起</span></div>
+        <a href="#signup" class="btn-primary">立即报名</a>
+    </section>
+
+    <!-- 特色 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择安地驾校</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>专业教练</h3>
+                    <p>资深教练团队，经验丰富，耐心教学，包教包会</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>快速拿证</h3>
+                    <p>科学安排学车时间，最快45天拿证</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>价格透明</h3>
+                    <p>一次性收费，无隐形消费，报名即签正规合同</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>交通便利</h3>
+                    <p>位于大连辛寨子，地铁公交直达，学车方便</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 课程 -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">培训课程</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>🚙 C1 手动挡</h3>
+                    <div class="price">¥3680</div>
+                    <ul>
+                        <li>科目一至科目四全程培训</li>
+                        <li>理论+实操系统教学</li>
+                        <li>一对一上车练习</li>
+                        <li>考试接送服务</li>
+                        <li>补考免费培训</li>
+                    </ul>
+                    <a href="#signup" class="btn-primary">选择C1</a>
+                </div>
+                <div class="course-card">
+                    <h3>🚗 C2 自动挡</h3>
+                    <div class="price">¥3680</div>
+                    <ul>
+                        <li>科目一至科目四全程培训</li>
+                        <li>自动挡操作简单易学</li>
+                        <li>一对一上车练习</li>
+                        <li>考试接送服务</li>
+                        <li>补考免费培训</li>
+                    </ul>
+                    <a href="#signup" class="btn-primary">选择C2</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 报名 -->
+    <section class="signup" id="signup">
+        <div class="container">
+            <h2 class="section-title">在线报名</h2>
+            <div class="form-container">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label>您的姓名 *</label>
+                        <input type="text" name="name" placeholder="请输入姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label>联系电话 *</label>
+                        <input type="tel" name="phone" placeholder="请输入手机号" required>
+                    </div>
+                    <div class="form-group">
+                        <label>选择车型 *</label>
+                        <select name="type" required>
+                            <option value="">请选择</option>
+                            <option value="c1">C1 手动挡 - ¥3680</option>
+                            <option value="c2">C2 自动挡 - ¥3680</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>备注（可选）</label>
+                        <input type="text" name="note" placeholder="如有其他需求请填写">
+                    </div>
+                    <button type="submit" class="btn-submit">提交报名</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📍 地址</h3>
+                    <p>大连市甘井子区辛寨子</p>
+                    <p>（具体位置请电话咨询）</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 电话</h3>
+                    <p><a href="tel:15898114611" style="color: #1e88e5; font-size: 24px; font-weight: bold; text-decoration: none;">15898114611</a></p>
+                    <p>（工作时间：8:00-18:00）</p>
+                </div>
+                <div class="contact-item">
+                    <h3>⏰ 营业时间</h3>
+                    <p>周一至周日</p>
+                    <p>8:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2024 安地驾校 版权所有</p>
+        <p>大连专业驾驶员培训机构</p>
+    </footer>
+
+    <script>
+        // 表单提交
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                type: formData.get('type'),
+                note: formData.get('note')
+            };
+            
+            // 这里可以对接后端API
+            // 暂时用alert演示
+            const typeText = data.type === 'c1' ? 'C1手动挡' : 'C2自动挡';
+            alert(`报名成功！\n\n姓名：${data.name}\n电话：${data.phone}\n车型：${typeText}\n\n我们会尽快与您联系！`);
+            
+            // 实际使用时，把报名信息发送到服务器
+            // fetch('/api/signup', {
+            //     method: 'POST',
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify(data)
+            // });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
